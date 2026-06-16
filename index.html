@@ -1,0 +1,1811 @@
+﻿<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio | Welcome</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&family=Kanit:wght@700;900&family=Monoton&family=Orbitron:wght@900&family=Permanent+Marker&family=Press+Start+2P&family=Rubik+Glitch&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* --- 1. Reset & Global Styles --- */
+        :root {
+            --site-bg: #000000;
+            --site-text: #ffffff;
+            --site-primary: #ff00df;
+            --site-primary-rgb: 255, 0, 223;
+            --site-accent: #00f0ff;
+            --site-accent-rgb: 0, 240, 255;
+            --site-hot: #ff0000;
+            --site-hot-rgb: 255, 0, 0;
+            --site-surface: #111111;
+            --site-depth: 42%;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: var(--site-text);
+            overflow-x: hidden;
+            background-color: var(--site-bg); /* กันเหนียว: ให้พื้นหลังเว็บเป็นสีดำไว้ก่อน */
+            transition: filter 0.25s ease, background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.site-inverted {
+            filter: invert(1);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--site-text);
+            transition: all 0.3s ease;
+        }
+
+        /* --- 2. Navigation Bar --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .logo-colors {
+            display: inline-flex;
+            gap: 5px;
+        }
+
+        .logo-color {
+            width: 12px;
+            height: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
+        }
+
+        .logo-year {
+            align-self: flex-start;
+            margin-left: -6px;
+            font-size: 0.58rem;
+            line-height: 1;
+            letter-spacing: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--site-hot);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* --- 3. Hero Section (Video Background) --- */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        /* --- 4. Content Styling --- */
+        .content {
+            z-index: 1;
+            padding: 0 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .content h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .content h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            color: #e0e0e0;
+        }
+
+        .hero-tagline {
+            width: min(100%, 1000px);
+            min-height: 3em;
+            margin-right: auto;
+            margin-left: auto;
+            line-height: 1.5;
+            background: linear-gradient(
+                90deg,
+                #c8c8c8 0%,
+                #e0e0e0 38%,
+                #ffffff 48%,
+                var(--site-accent) 52%,
+                #ffffff 57%,
+                #e0e0e0 66%,
+                #c8c8c8 100%
+            );
+            background-size: 260% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 16px rgba(var(--site-accent-rgb), 0.3);
+            animation: heroTaglineGlow 4s linear infinite;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        .hero-tagline.is-switching {
+            opacity: 0;
+            transform: translateY(8px);
+        }
+
+        .cta-button {
+            padding: 12px 30px;
+            background-color: var(--site-hot);
+            color: #fff;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(156, 0, 0, 0.4);
+        }
+
+        .cta-button:hover {
+            background-color: white;
+            color: #000;
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .glow-link {
+            display: inline-block;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow:
+                0 0 6px rgba(255, 255, 255, 0.9),
+                0 0 14px rgba(var(--site-accent-rgb), 0.85),
+                0 0 28px rgba(var(--site-accent-rgb), 0.7);
+            transition: transform 0.25s ease, text-shadow 0.25s ease;
+        }
+
+        .glow-link:hover {
+            transform: translateY(-3px);
+            text-shadow:
+                0 0 10px rgba(255, 255, 255, 1),
+                0 0 22px rgba(var(--site-accent-rgb), 1),
+                0 0 48px rgba(var(--site-accent-rgb), 1),
+                0 0 76px rgba(var(--site-accent-rgb), 0.9);
+        }
+
+        /* --- Skills Section --- */
+        .skills-section {
+            padding: 24px 24px 100px;
+            background:
+                radial-gradient(circle at 76% 12%, rgba(var(--site-primary-rgb), 0.48), transparent var(--site-depth)),
+                linear-gradient(135deg, var(--site-accent) 0%, var(--site-accent) 45%, color-mix(in srgb, var(--site-accent) 72%, white) 100%);
+            color: var(--site-primary);
+            position: relative;
+            overflow: visible;
+            isolation: isolate;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .skills-section::before {
+            content: '';
+            position: absolute;
+            inset: -35%;
+            z-index: 0;
+            pointer-events: none;
+            background:
+                linear-gradient(115deg,
+                    rgba(var(--site-primary-rgb), 0.7) 0%,
+                    rgba(var(--site-primary-rgb), 0.18) 24%,
+                    rgba(255, 255, 255, 0.5) 46%,
+                    rgba(var(--site-accent-rgb), 0.12) 66%,
+                    rgba(0, 0, 0, 0.18) 100%);
+            background-size: 190% 190%;
+            filter: blur(32px);
+            opacity: 0.42;
+            animation: resumeAmbientLight 18s ease-in-out infinite alternate;
+        }
+
+        .skills-section .container {
+            max-width: none;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skills-showcase {
+            display: grid;
+            grid-template-columns: minmax(260px, 0.8fr) minmax(320px, 1.4fr);
+            gap: 48px;
+            margin-top: 0;
+            min-height: 390px;
+            position: relative;
+            transition: min-height 0.35s ease;
+        }
+
+        .skill-menu {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 28px;
+        }
+
+        .skill-menu-title {
+            position: relative;
+            display: inline-block;
+            font-size: clamp(2.6rem, 5vw, 5rem);
+            line-height: 0.95;
+            font-weight: 400;
+            color: transparent;
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--site-primary) 0%,
+                    var(--site-primary) 34%,
+                    #ffffff 48%,
+                    var(--site-accent) 56%,
+                    var(--site-primary) 70%,
+                    var(--site-primary) 100%
+                );
+            background-size: 260% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-shadow:
+                0 0 8px rgba(var(--site-primary-rgb), 0.48),
+                0 0 24px rgba(var(--site-accent-rgb), 0.28);
+            animation: titleGlowSweep 3.8s linear infinite;
+        }
+
+        .skill-title-line {
+            display: inline-block;
+            white-space: nowrap;
+            font-size: clamp(2.2rem, 4.2vw, 4.2rem);
+        }
+
+        .skill-item {
+            width: 100%;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: inherit;
+            font: inherit;
+            font-size: clamp(1.44rem, 2.7vw, 2.7rem);
+            text-align: left;
+            cursor: pointer;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        .skill-item:hover,
+        .skill-item:focus-visible {
+            opacity: 0.62;
+            transform: translateX(10px);
+            outline: none;
+        }
+
+        .skill-item.is-active {
+            opacity: 1;
+            transform: translateX(10px);
+            text-shadow: 0 0 12px rgba(var(--site-primary-rgb), 0.74);
+        }
+
+        .skills-showcase[data-active-skill]:not([data-active-skill="commercial-photo"]) .skill-item:not(.is-active) {
+            display: none;
+        }
+
+        #commercial-photo,
+        #commercial-video {
+            scroll-margin-top: 150px;
+        }
+
+        .skill-stage {
+            position: relative;
+            min-height: 360px;
+            overflow: visible;
+            transition: min-height 0.35s ease;
+        }
+
+        .skill-preview {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 220px));
+            gap: 24px;
+            align-content: start;
+            justify-content: start;
+            opacity: 0;
+            transform: translateY(18px);
+            pointer-events: none;
+            transition: opacity 0.35s ease, transform 0.35s ease;
+        }
+
+        .preview-graphic {
+            grid-template-columns: repeat(2, minmax(220px, 280px));
+            grid-template-rows: repeat(2, auto);
+        }
+
+        .preview-graphic .work-preview:nth-child(n + 5) {
+            display: none;
+        }
+
+        .preview-music {
+            grid-template-columns: minmax(320px, 640px);
+        }
+
+        .preview-video {
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 240px));
+            justify-content: center;
+        }
+
+        .preview-video .work-thumb.portrait {
+            aspect-ratio: 9 / 16;
+        }
+
+        .preview-languages {
+            grid-template-columns: minmax(320px, 640px);
+        }
+
+        .language-copy {
+            margin-top: 16px;
+            color: var(--site-primary);
+            font-size: 1.932rem;
+            line-height: 1.32;
+            text-align: center;
+        }
+
+        .preview-languages .work-caption strong {
+            font-size: 1.89rem;
+        }
+
+        .preview-languages .work-caption span {
+            font-size: 1.26rem;
+        }
+
+        .language-copy p + p {
+            margin-top: 10px;
+        }
+
+        .language-copy-th {
+            font-size: 1.46832rem;
+        }
+
+        .preview-commercial-photo {
+            grid-template-columns: minmax(0, 1fr);
+            width: 100%;
+        }
+
+        .preview-commercial-video {
+            grid-template-columns: repeat(3, minmax(180px, 1fr));
+        }
+
+        .preview-coding {
+            grid-template-columns: minmax(320px, 720px);
+        }
+
+        .vibe-lab {
+            --lab-accent: var(--site-primary);
+            --lab-alt: var(--site-accent);
+            --lab-depth: 42%;
+            width: 100%;
+            padding: 20px;
+            background:
+                linear-gradient(135deg, rgba(0, 0, 0, 0.92), rgba(22, 0, 18, 0.82)),
+                radial-gradient(circle at 78% 16%, var(--lab-accent), transparent var(--lab-depth));
+            border: 1px solid rgba(var(--site-primary-rgb), 0.34);
+            box-shadow: 0 18px 42px rgba(0, 0, 0, 0.34);
+        }
+
+        .vibe-lab-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+
+        .vibe-lab h3 {
+            color: #fff;
+            font-size: 1.45rem;
+            line-height: 1;
+        }
+
+        .vibe-status {
+            color: var(--lab-alt);
+            font-size: 0.82rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .vibe-screen {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 16px;
+            min-height: 220px;
+        }
+
+        .vibe-hero {
+            display: grid;
+            align-content: end;
+            gap: 12px;
+            min-height: 220px;
+            padding: 18px;
+            background:
+                radial-gradient(circle at 82% 18%, var(--lab-alt), transparent var(--lab-depth)),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.76));
+            color: #080808;
+            overflow: hidden;
+        }
+
+        .vibe-hero p {
+            max-width: 330px;
+            color: #202020;
+            line-height: 1.35;
+        }
+
+        .vibe-hero .vibe-title {
+            color: #080808;
+            font-size: 1.72rem;
+        }
+
+        .vibe-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .vibe-chip {
+            padding: 7px 10px;
+            background: #080808;
+            color: #fff;
+            font-size: 0.76rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .vibe-stack {
+            display: grid;
+            gap: 10px;
+        }
+
+        .vibe-card {
+            min-height: 64px;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.94);
+            color: #080808;
+            border-left: 6px solid var(--lab-accent);
+        }
+
+        .vibe-card strong,
+        .vibe-card span {
+            display: block;
+        }
+
+        .vibe-card span {
+            margin-top: 6px;
+            color: #343434;
+            font-size: 0.85rem;
+        }
+
+        .vibe-controls {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .vibe-controls button,
+        .vibe-toggle {
+            min-height: 42px;
+            border: 1px solid rgba(255, 255, 255, 0.24);
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .vibe-controls button:hover,
+        .vibe-controls button:focus-visible,
+        .vibe-toggle:hover,
+        .vibe-toggle:focus-within {
+            border-color: var(--lab-alt);
+            outline: none;
+        }
+
+        .vibe-range {
+            grid-column: span 2;
+            display: grid;
+            gap: 7px;
+            color: #fff;
+            font-size: 0.88rem;
+        }
+
+        .vibe-range input {
+            accent-color: var(--lab-accent);
+        }
+
+        .vibe-color {
+            display: grid;
+            grid-template-columns: 1fr 42px;
+            align-items: center;
+            gap: 9px;
+            min-height: 42px;
+            padding: 0 10px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            font-size: 0.88rem;
+        }
+
+        .vibe-color input {
+            width: 34px;
+            height: 28px;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .vibe-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.88rem;
+        }
+
+        .vibe-toggle input {
+            accent-color: var(--lab-accent);
+        }
+
+        .vibe-lab.is-moving .vibe-card {
+            animation: vibeFloat 1.8s ease-in-out infinite alternate;
+        }
+
+        .vibe-lab.is-moving .vibe-card:nth-child(2) {
+            animation-delay: 0.18s;
+        }
+
+        .vibe-lab.is-moving .vibe-card:nth-child(3) {
+            animation-delay: 0.36s;
+        }
+
+        .skills-showcase:has(.skill-item:nth-of-type(1):hover) .preview-graphic,
+        .skills-showcase:has(.skill-item:nth-of-type(1):focus-visible) .preview-graphic,
+        .skills-showcase:has(.skill-item:nth-of-type(2):hover) .preview-music,
+        .skills-showcase:has(.skill-item:nth-of-type(2):focus-visible) .preview-music,
+        .skills-showcase:has(.skill-item:nth-of-type(3):hover) .preview-video,
+        .skills-showcase:has(.skill-item:nth-of-type(3):focus-visible) .preview-video,
+        .skills-showcase:has(.skill-item:nth-of-type(4):hover) .preview-coding,
+        .skills-showcase:has(.skill-item:nth-of-type(4):focus-visible) .preview-coding,
+        .skills-showcase:has(.preview-coding:hover) .preview-coding,
+        .skills-showcase:has(.preview-coding:focus-within) .preview-coding,
+        .skills-showcase:has(.skill-item:nth-of-type(5):hover) .preview-languages,
+        .skills-showcase:has(.skill-item:nth-of-type(5):focus-visible) .preview-languages,
+        .skills-showcase:has(.skill-item:nth-of-type(6):hover) .preview-commercial-photo,
+        .skills-showcase:has(.skill-item:nth-of-type(6):focus-visible) .preview-commercial-photo,
+        .skills-showcase:has(.preview-commercial-photo:hover) .preview-commercial-photo,
+        .skills-showcase:has(.skill-item:nth-of-type(7):hover) .preview-commercial-video,
+        .skills-showcase:has(.skill-item:nth-of-type(7):focus-visible) .preview-commercial-video,
+        .skills-showcase[data-active-skill="graphic"] .preview-graphic,
+        .skills-showcase[data-active-skill="music"] .preview-music,
+        .skills-showcase[data-active-skill="video"] .preview-video,
+        .skills-showcase[data-active-skill="coding"] .preview-coding,
+        .skills-showcase[data-active-skill="languages"] .preview-languages,
+        .skills-showcase[data-active-skill="commercial-photo"] .preview-commercial-photo,
+        .skills-showcase[data-active-skill="commercial-video"] .preview-commercial-video {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .skills-showcase[data-active-skill] .skill-preview {
+            opacity: 0;
+            transform: translateY(18px);
+            pointer-events: none;
+        }
+
+        .skills-showcase[data-active-skill="graphic"] .preview-graphic,
+        .skills-showcase[data-active-skill="music"] .preview-music,
+        .skills-showcase[data-active-skill="video"] .preview-video,
+        .skills-showcase[data-active-skill="coding"] .preview-coding,
+        .skills-showcase[data-active-skill="languages"] .preview-languages,
+        .skills-showcase[data-active-skill="commercial-photo"] .preview-commercial-photo,
+        .skills-showcase[data-active-skill="commercial-video"] .preview-commercial-video {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .skills-showcase:has(.skill-item:nth-of-type(1):hover),
+        .skills-showcase:has(.skill-item:nth-of-type(1):focus-visible),
+        .skills-showcase[data-active-skill="graphic"] {
+            min-height: 720px;
+        }
+
+        .skills-showcase:has(.skill-item:nth-of-type(1):hover) .skill-stage,
+        .skills-showcase:has(.skill-item:nth-of-type(1):focus-visible) .skill-stage,
+        .skills-showcase[data-active-skill="graphic"] .skill-stage {
+            min-height: 720px;
+        }
+
+        .skills-showcase:has(.skill-item:nth-of-type(2):hover),
+        .skills-showcase:has(.skill-item:nth-of-type(2):focus-visible),
+        .skills-showcase:has(.skill-item:nth-of-type(4):hover),
+        .skills-showcase:has(.skill-item:nth-of-type(4):focus-visible),
+        .skills-showcase:has(.preview-coding:hover),
+        .skills-showcase:has(.preview-coding:focus-within),
+        .skills-showcase:has(.skill-item:nth-of-type(5):hover),
+        .skills-showcase:has(.skill-item:nth-of-type(5):focus-visible),
+        .skills-showcase:has(.skill-item:nth-of-type(6):hover),
+        .skills-showcase:has(.skill-item:nth-of-type(6):focus-visible),
+        .skills-showcase:has(.skill-item:nth-of-type(7):hover),
+        .skills-showcase:has(.skill-item:nth-of-type(7):focus-visible),
+        .skills-showcase[data-active-skill="music"],
+        .skills-showcase[data-active-skill="coding"],
+        .skills-showcase[data-active-skill="languages"],
+        .skills-showcase[data-active-skill="commercial-photo"],
+        .skills-showcase[data-active-skill="commercial-video"] {
+            min-height: 520px;
+        }
+
+        .skills-showcase:has(.skill-item:nth-of-type(2):hover) .skill-stage,
+        .skills-showcase:has(.skill-item:nth-of-type(2):focus-visible) .skill-stage,
+        .skills-showcase:has(.skill-item:nth-of-type(4):hover) .skill-stage,
+        .skills-showcase:has(.skill-item:nth-of-type(4):focus-visible) .skill-stage,
+        .skills-showcase:has(.preview-coding:hover) .skill-stage,
+        .skills-showcase:has(.preview-coding:focus-within) .skill-stage,
+        .skills-showcase:has(.skill-item:nth-of-type(5):hover) .skill-stage,
+        .skills-showcase:has(.skill-item:nth-of-type(5):focus-visible) .skill-stage,
+        .skills-showcase:has(.skill-item:nth-of-type(6):hover) .skill-stage,
+        .skills-showcase:has(.skill-item:nth-of-type(6):focus-visible) .skill-stage,
+        .skills-showcase:has(.skill-item:nth-of-type(7):hover) .skill-stage,
+        .skills-showcase:has(.skill-item:nth-of-type(7):focus-visible) .skill-stage,
+        .skills-showcase[data-active-skill="music"] .skill-stage,
+        .skills-showcase[data-active-skill="coding"] .skill-stage,
+        .skills-showcase[data-active-skill="languages"] .skill-stage,
+        .skills-showcase[data-active-skill="commercial-photo"] .skill-stage,
+        .skills-showcase[data-active-skill="commercial-video"] .skill-stage {
+            min-height: 520px;
+        }
+
+        .skills-showcase:has(.skill-item:nth-of-type(3):hover),
+        .skills-showcase:has(.skill-item:nth-of-type(3):focus-visible),
+        .skills-showcase[data-active-skill="video"],
+        .skills-showcase:has(.skill-item:nth-of-type(3):hover) .skill-stage,
+        .skills-showcase:has(.skill-item:nth-of-type(3):focus-visible) .skill-stage,
+        .skills-showcase[data-active-skill="video"] .skill-stage {
+            min-height: clamp(560px, 42vw, 680px);
+        }
+
+        .work-preview {
+            transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        .work-preview:hover {
+            filter: brightness(0.7);
+            transform: translateY(-6px);
+        }
+
+        .work-thumb {
+            width: 100%;
+            overflow: hidden;
+            aspect-ratio: 16 / 10;
+            background: #111;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
+        }
+
+        .work-thumb img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .work-thumb video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-preview {
+            max-width: 640px;
+        }
+
+        .video-preview .work-thumb {
+            aspect-ratio: 16 / 9;
+        }
+
+        .work-thumb.portrait {
+            aspect-ratio: 1 / 1;
+        }
+
+        .work-art {
+            display: grid;
+            place-items: center;
+            height: 100%;
+            padding: 24px;
+            background: #050505;
+            color: white;
+            font-size: 1.4rem;
+            text-align: center;
+        }
+
+        .work-art.cyan {
+            background: linear-gradient(135deg, var(--site-accent), #ffffff 48%, color-mix(in srgb, var(--site-accent) 35%, #6bff77));
+            color: #006a6f;
+        }
+
+        .work-art.poster {
+            background:
+                linear-gradient(75deg, transparent 52%, #080808 52%),
+                repeating-linear-gradient(90deg, #211064 0 32px, #000 32px 64px);
+            color: var(--site-primary);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+        }
+
+        .work-art.video {
+            background:
+                linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.55)),
+                linear-gradient(135deg, #ff003c, #111 50%, #08d5d8);
+            color: white;
+        }
+
+        .work-caption {
+            margin-top: 7px;
+            color: var(--site-primary);
+            line-height: 1.1;
+        }
+
+        .work-caption strong {
+            display: block;
+            font-size: 1.35rem;
+            font-weight: 400;
+        }
+
+        .work-caption span {
+            display: block;
+            font-size: 0.9rem;
+        }
+
+        .skill-note {
+            max-width: 440px;
+            color: var(--site-primary);
+            font-size: clamp(1.2rem, 2.4vw, 2rem);
+            line-height: 1.2;
+        }
+
+        @media (max-width: 900px) {
+            .skills-showcase {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .skill-stage {
+                display: grid;
+                gap: 34px;
+                min-height: 0;
+                overflow: visible;
+            }
+
+            .skill-preview {
+                position: static;
+                opacity: 1;
+                transform: none;
+                pointer-events: auto;
+            }
+
+            .preview-graphic,
+            .preview-music,
+            .preview-commercial-video {
+                grid-template-columns: repeat(2, minmax(120px, 1fr));
+            }
+
+            .preview-graphic .work-preview:nth-child(n + 5) {
+                display: block;
+            }
+
+            .video-preview {
+                max-width: none;
+            }
+
+            .skill-note {
+                max-width: none;
+                font-size: 1.1rem;
+            }
+
+            .vibe-screen {
+                grid-template-columns: 1fr;
+            }
+
+            .vibe-controls {
+                grid-template-columns: 1fr;
+            }
+
+            .vibe-range {
+                grid-column: auto;
+            }
+
+            .preview-commercial-photo,
+            .preview-commercial-video {
+                grid-template-columns: 1fr;
+            }
+
+            .preview-commercial-photo .work-preview {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px;
+                flex-direction: column;
+                gap: 15px;
+                background: rgba(0,0,0,0.9); /* มือถือให้พื้นหลังทึบหน่อยจะได้อ่านเมนูง่าย */
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px 18px;
+            }
+            .nav-links a { font-size: 0.8rem; }
+            .content {
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .content h1 { font-size: 2rem; }
+            .content h2 { font-size: 1rem; }
+            .hero-tagline { min-height: 4.5em; }
+        }
+
+        /* Keyframes for Animation */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes heroTaglineGlow {
+            from { background-position: -150% 50%; }
+            to { background-position: 150% 50%; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-tagline {
+                animation: none;
+                background-position: 50% 50%;
+            }
+        }
+
+        @keyframes vibeFloat {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-8px);
+            }
+        }
+
+        @keyframes titleGlowSweep {
+            from {
+                background-position: 130% 50%;
+            }
+            to {
+                background-position: -130% 50%;
+            }
+        }
+
+        @keyframes resumeAmbientLight {
+            0% {
+                transform: translate3d(-8%, -5%, 0) rotate(0deg) scale(1);
+                background-position: 0% 50%;
+            }
+            50% {
+                transform: translate3d(6%, 4%, 0) rotate(6deg) scale(1.04);
+                background-position: 100% 45%;
+            }
+            100% {
+                transform: translate3d(9%, -3%, 0) rotate(-4deg) scale(1.02);
+                background-position: 45% 100%;
+            }
+        }
+
+        @keyframes aboutAmbientLight {
+            0% {
+                transform: translate3d(7%, -4%, 0) rotate(0deg) scale(1);
+                background-position: 100% 50%;
+            }
+            50% {
+                transform: translate3d(-6%, 5%, 0) rotate(-5deg) scale(1.05);
+                background-position: 0% 45%;
+            }
+            100% {
+                transform: translate3d(-9%, -3%, 0) rotate(4deg) scale(1.02);
+                background-position: 55% 100%;
+            }
+        }
+
+        /* --- About Me Section --- */
+.about-section {
+    padding: 100px 50px;
+    background:
+        radial-gradient(circle at 82% 18%, rgba(var(--site-hot-rgb), 0.28), transparent var(--site-depth)),
+        linear-gradient(135deg, #090909 0%, var(--site-surface) 48%, color-mix(in srgb, var(--site-hot) 16%, #050505) 100%); /* สีดำด้าน ไม่มืดสนิท เพื่อให้แยก layer กับส่วนอื่น */
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transition: background 0.3s ease;
+}
+
+.about-section::before {
+    content: '';
+    position: absolute;
+    inset: -35%;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(120deg,
+            rgba(var(--site-hot-rgb), 0.42) 0%,
+            rgba(var(--site-hot-rgb), 0.08) 28%,
+            rgba(255, 255, 255, 0.12) 50%,
+            rgba(0, 0, 0, 0.05) 70%,
+            rgba(var(--site-hot-rgb), 0.28) 100%);
+    background-size: 190% 190%;
+    filter: blur(34px);
+    opacity: 0.5;
+    animation: aboutAmbientLight 20s ease-in-out infinite alternate;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px; /* ระยะห่างระหว่างรูปกับข้อความ */
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Image Styling */
+.about-image {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    flex-shrink: 0;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    filter: grayscale(20%); /* ใส่ฟิลเตอร์ขาวดำนิดๆ ให้ดูอาร์ต (ลบได้) */
+    transition: all 0.5s ease;
+}
+
+.about-image:hover img {
+    filter: grayscale(0%); /* เมาส์ชี้แล้วกลับมาสีสด */
+    transform: translateY(-5px);
+}
+
+/* กรอบเส้นขอบตกแต่งด้านหลังรูป */
+.img-border {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--site-hot); /* สีแดงธีมเว็บ */
+    border-radius: 20px;
+    z-index: 1;
+    transition: top 0.3s, left 0.3s;
+}
+
+.about-image:hover .img-border {
+    top: 10px;
+    left: 10px; /* ขยับกรอบเข้ามาเมื่อเมาส์ชี้ */
+}
+
+/* Content Styling */
+.about-content {
+    flex: 1;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.sub-heading {
+    font-size: 1.2rem;
+    color: var(--site-hot);
+    margin-bottom: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.about-content p {
+    color: #ccc;
+    line-height: 1.8; /* ระยะห่างบรรทัด */
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+/* Social Buttons */
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.social-btn {
+    width: 45px;
+    height: 45px;
+    border: 1px solid #333;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.social-btn i {
+    font-size: 1.35rem;
+    line-height: 1;
+}
+
+.social-btn:hover {
+    background-color: var(--site-hot);
+    border-color: var(--site-hot);
+    box-shadow: 0 0 15px rgba(var(--site-hot-rgb), 0.4);
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+    .about-container {
+        flex-direction: column; /* มือถือให้เรียงลงแนวตั้ง */
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .about-image {
+        width: 250px;
+        height: 250px;
+        margin: 0 auto;
+    }
+
+    .about-content h2 { text-align: center !important; }
+}
+
+/* --- FENN Glitch Text Effect --- */
+        .fenn-glitch {
+            display: inline-block;
+            cursor: pointer;
+            min-width: 4.5ch;
+            position: relative;
+            text-align: left;
+            transform-origin: center;
+            will-change: transform;
+            transition: min-width 0.25s ease, opacity 0.18s ease, transform 0.18s ease, text-shadow 0.25s ease, color 0.25s ease;
+        }
+
+        .fenn-glitch.is-switching {
+            opacity: 0;
+            transform: translateY(10px) scale(0.98);
+        }
+
+        /* เมื่อเอาเมาส์ไปชี้ (Hover) */
+        .fenn-glitch:hover {
+            min-width: 18ch;
+            color: #ff00df;
+            text-shadow:
+                0 0 8px rgba(255, 0, 223, 0.9),
+                0 0 18px rgba(255, 0, 223, 0.75),
+                0 0 34px rgba(255, 0, 223, 0.55);
+            animation: none;
+        }
+
+        /* คำสั่งสลับฟอนต์ (Keyframes) */
+        @keyframes fontShuffle {
+            0%   { font-family: 'Poppins', sans-serif; transform: scale(1.12) skewX(0deg); }
+            10%  { font-family: 'Press Start 2P', cursive; transform: scale(1.18) skewX(-10deg); }
+            20%  { font-family: 'Courier New', monospace; transform: scale(1.12) skewX(10deg); }
+            30%  { font-family: 'Permanent Marker', cursive; transform: scale(1.2) skewX(-5deg); }
+            40%  { font-family: 'Orbitron', sans-serif; transform: scale(1.14) skewX(5deg); }
+            50%  { font-family: 'Bangers', cursive; transform: scale(1.2) skewX(-8deg) scaleX(1.05); }
+            60%  { font-family: 'Bebas Neue', sans-serif; transform: scale(1.16) skewX(8deg) scaleY(1.08); }
+            70%  { font-family: 'Rubik Glitch', system-ui; transform: scale(1.18) skewX(-12deg); }
+            80%  { font-family: 'Monoton', cursive; transform: scale(1.13) skewX(6deg) scaleX(1.08); }
+            90%  { font-family: 'Kanit', sans-serif; transform: scale(1.18) skewX(-4deg); }
+            100% { font-family: 'Poppins', sans-serif; transform: scale(1.12) skewX(0deg); }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                flex-wrap: wrap;
+                justify-content: center;
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 14px;
+            }
+
+            .nav-links a {
+                font-size: 0.75rem;
+            }
+
+            .hero {
+                min-height: 100svh;
+                height: auto;
+                padding-top: 150px;
+                padding-bottom: 70px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">
+            <span>FENNRIRTOOTHZ</span>
+            <span class="logo-year">2026</span>
+            <span class="logo-colors" aria-label="Site color palette">
+                <span class="logo-color" style="background: var(--site-bg);"></span>
+                <span class="logo-color" style="background: var(--site-text);"></span>
+                <span class="logo-color" style="background: var(--site-hot);"></span>
+                <span class="logo-color" style="background: var(--site-accent);"></span>
+                <span class="logo-color" style="background: var(--site-primary);"></span>
+            </span>
+        </a>
+        <div class="nav-links">
+            <a href="#about">About Me</a>
+            <a href="#skills">Skills</a>
+            <a href="#commercial-photo">Commercial</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <video class="video-bg" autoplay muted loop playsinline>
+            <source src="niteharts.mp4" type="video/mp4">
+            Browser ของคุณไม่รองรับวิดีโอ
+        </video>
+
+        <div class="overlay"></div>
+
+        <div class="content">
+            <h1>Hi. My name is <span class="fenn-glitch">FENN</span></h1>
+            <h2 class="hero-tagline" lang="en">I turn your ideas into bold visuals, music, videos, and digital experiences.</h2>
+         <a href="#skills" class="glow-link">SEE SKILLS</a>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container about-container">
+            <div class="about-image">
+                <img src="Nazunoooo.png" alt="My Profile">
+                <div class="img-border"></div> </div>
+
+            <div class="about-content">
+                <h2 class="section-title" style="text-align: left;">About Me</h2>
+                <h3 class="sub-heading">Freelance Developer & Learning Designer</h3>
+                <p>
+                    Hi! Name <strong>FENN</strong> I like graphic design, News, Technology, and Music. Learning new things endlessly to perfection.
+                </p>
+                <p>
+                    I can can give your business a new creative start right away!
+                </p>
+                
+                <div class="social-links">
+                    <a href="https://www.instagram.com/owl.4983532/" class="social-btn" aria-label="Instagram" target="_blank">
+                        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.facebook.com/S.Moolthaisong/about?locale=th_TH" class="social-btn" aria-label="Facebook" target="_blank">
+                        <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <div class="skills-showcase">
+                <div class="skill-menu">
+                    <h2 class="skill-menu-title">Resume<br><span class="skill-title-line">What can I do:</span></h2>
+                    <button class="skill-item" type="button" data-skill="graphic">Graphic Design</button>
+                    <button class="skill-item" type="button" data-skill="music">Music Produce</button>
+                    <button class="skill-item" type="button" data-skill="video">Video Editing</button>
+                    <button class="skill-item" type="button" data-skill="coding">Vibe Coding</button>
+                    <button class="skill-item" type="button" data-skill="languages">Languages</button>
+                    <button id="commercial-photo" class="skill-item" type="button" data-skill="commercial-photo">ภาพโฆษณา <span class="skill-item-en" lang="en">Advertising Images</span></button>
+                    <button id="commercial-video" class="skill-item" type="button" data-skill="commercial-video">Commercial Video</button>
+                </div>
+
+                <div class="skill-stage" aria-live="polite">
+                    <div class="skill-preview preview-graphic">
+                        <article class="work-preview">
+                            <div class="work-thumb portrait">
+                                <img src="Resume material/Ford Sales Promoter Employee Application Form.png" alt="Job recruitment poster">
+                            </div>
+                            <p class="work-caption">
+                                <strong>รับสมัครงาน</strong>
+                                <span>Job recruitment poster</span>
+                            </p>
+                        </article>
+
+                        <article class="work-preview">
+                            <div class="work-thumb">
+                                <img src="Resume material/Frutigo Aero AI 1.png" alt="Background art">
+                            </div>
+                            <p class="work-caption">
+                                <strong>งานภาพพื้นหลังสไตล์ต่างๆ</strong>
+                                <span>Background Art</span>
+                            </p>
+                        </article>
+
+                        <article class="work-preview">
+                            <div class="work-thumb portrait">
+                                <img src="Resume material/HCD Fan Album Cover.png" alt="Album poster">
+                            </div>
+                            <p class="work-caption">
+                                <strong>ปกอัลบั้ม</strong>
+                                <span>Album poster</span>
+                            </p>
+                        </article>
+
+                        <article class="work-preview">
+                            <div class="work-thumb portrait">
+                                <img src="Resume material/HCD Material 5.jpg" alt="HCD visual material">
+                            </div>
+                            <p class="work-caption">
+                                <strong>HCD Visual</strong>
+                                <span>Graphic material</span>
+                            </p>
+                        </article>
+
+                        <article class="work-preview">
+                            <div class="work-thumb">
+                                <img src="FUCK THE SPEAKERZ UP!.png" alt="FUCK THE SPEAKERZ UP! cover">
+                            </div>
+                            <p class="work-caption">
+                                <strong>FUCK THE SPEAKERZ UP!</strong>
+                                <span>Cover artwork</span>
+                            </p>
+                        </article>
+
+                        <article class="work-preview">
+                            <div class="work-thumb">
+                                <img src="Luther.png" alt="luther cover">
+                            </div>
+                            <p class="work-caption">
+                                <strong>luther</strong>
+                                <span>Cover artwork</span>
+                            </p>
+                        </article>
+
+                        <article class="work-preview">
+                            <div class="work-thumb portrait">
+                                <img src="Nazunoooo.png" alt="Profile visual">
+                            </div>
+                            <p class="work-caption">
+                                <strong>Profile Visual</strong>
+                                <span>Site image asset</span>
+                            </p>
+                        </article>
+                    </div>
+
+                    <div class="skill-preview preview-music">
+                        <article class="work-preview video-preview">
+                            <div class="work-thumb">
+                                <video autoplay muted loop playsinline preload="metadata">
+                                    <source src="Resume material/Video Material/Music Produce EXP Vid.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <p class="work-caption">
+                                <strong>Music Produce EXP</strong>
+                                <span>Preview video</span>
+                            </p>
+                        </article>
+                    </div>
+
+                    <div class="skill-preview preview-video">
+                        <article class="work-preview video-preview">
+                            <div class="work-thumb portrait">
+                                <video autoplay muted loop playsinline preload="metadata">
+                                    <source src="Resume material/Video Material/Big Bike edit.mp4" type="video/mp4">
+                                    Browser ของคุณไม่รองรับวิดีโอ
+                                </video>
+                            </div>
+                            <p class="work-caption">
+                                <strong>Example 1</strong>
+                                <span>Video editing preview</span>
+                            </p>
+                        </article>
+
+                        <article class="work-preview video-preview">
+                            <div class="work-thumb portrait">
+                                <video autoplay muted loop playsinline preload="metadata">
+                                    <source src="Resume material/Video Material/61626.MP4" type="video/mp4">
+                                    Browser ของคุณไม่รองรับวิดีโอ
+                                </video>
+                            </div>
+                            <p class="work-caption">
+                                <strong>Example 2</strong>
+                                <span>Video editing preview</span>
+                            </p>
+                        </article>
+                    </div>
+
+                    <div class="skill-preview preview-coding">
+                        <div class="vibe-lab is-moving">
+                            <div class="vibe-lab-head">
+                                <h3>UI Lab</h3>
+                                <span class="vibe-status">Live Surface</span>
+                            </div>
+
+                            <div class="vibe-screen">
+                                <div class="vibe-hero">
+                                    <div class="vibe-chip-row">
+                                        <span class="vibe-chip">HTML</span>
+                                        <span class="vibe-chip">CSS</span>
+                                        <span class="vibe-chip">JS</span>
+                                    </div>
+                                    <h3 class="vibe-title">Interactive web detail</h3>
+                                    <p>Theme, motion, and intensity change live inside this mini interface.</p>
+                                </div>
+
+                                <div class="vibe-stack">
+                                    <div class="vibe-card">
+                                        <strong>Motion State</strong>
+                                        <span class="vibe-motion-label">Active</span>
+                                    </div>
+                                    <div class="vibe-card">
+                                        <strong>Accent Depth</strong>
+                                        <span class="vibe-depth-label">42%</span>
+                                    </div>
+                                    <div class="vibe-card">
+                                        <strong>Build Style</strong>
+                                        <span>Fast UI experiment</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="vibe-controls">
+                                <button type="button" data-vibe-theme="neon">Neon</button>
+                                <button type="button" data-vibe-theme="heat">Heat</button>
+                                <button type="button" data-vibe-theme="ice">Ice</button>
+                                <label class="vibe-color">
+                                    Primary
+                                    <input class="vibe-color-input" type="color" value="#ff00df" data-theme-part="primary">
+                                </label>
+                                <label class="vibe-color">
+                                    Accent
+                                    <input class="vibe-color-input" type="color" value="#00f0ff" data-theme-part="accent">
+                                </label>
+                                <label class="vibe-color">
+                                    Hot
+                                    <input class="vibe-color-input" type="color" value="#ff0000" data-theme-part="hot">
+                                </label>
+                                <label class="vibe-range">
+                                    Intensity
+                                    <input class="vibe-intensity" type="range" min="24" max="68" value="42">
+                                </label>
+                                <label class="vibe-toggle">
+                                    <input class="vibe-motion" type="checkbox" checked>
+                                    Motion
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-preview preview-languages">
+                        <article class="work-preview video-preview">
+                            <div class="work-thumb">
+                                <video autoplay muted loop playsinline preload="metadata">
+                                    <source src="Resume material/Video Material/Guy explaining whiteboard meme original version.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <p class="work-caption">
+                                <strong>Languages</strong>
+                            </p>
+                            <div class="language-copy">
+                                <p class="language-copy-th">Fluent in both Thai and English, with strong communication skills in speaking, reading, and writing.</p>
+                                <p class="language-copy-th">มีความสามารถในการสื่อสารภาษาไทยและภาษาอังกฤษได้อย่างคล่องแคล่ว ทั้งด้านการพูด การอ่าน และการเขียน</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="skill-preview preview-commercial-photo"></div>
+
+                    <div class="skill-preview preview-commercial-video">
+                        <article class="work-preview video-preview">
+                            <div class="work-thumb">
+                                <video class="commercial-video" muted loop playsinline preload="metadata">
+                                    <source src="Resume material/Video Material/Com 1.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <p class="work-caption">
+                                <strong>Commercial 01</strong>
+                                <span>Preview video</span>
+                            </p>
+                        </article>
+
+                        <article class="work-preview video-preview">
+                            <div class="work-thumb">
+                                <video class="commercial-video" muted loop playsinline preload="metadata">
+                                    <source src="Resume material/Video Material/Com 2.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <p class="work-caption">
+                                <strong>Commercial 02</strong>
+                                <span>Preview video</span>
+                            </p>
+                        </article>
+
+                        <article class="work-preview video-preview">
+                            <div class="work-thumb">
+                                <video class="commercial-video" muted loop playsinline preload="metadata">
+                                    <source src="Resume material/Video Material/Com 3.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <p class="work-caption">
+                                <strong>Commercial 03</strong>
+                                <span>Preview video</span>
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const pageTitles = [
+            'FENNRIRTOOTHZ',
+            'HCD WORLD DOMINATION',
+            'FENN | Music Lover'
+        ];
+
+        const typingSpeed = 120;
+        const deletingSpeed = 60;
+        const pauseAfterTyping = 1400;
+        const pauseBeforeTyping = 300;
+        let titleIndex = 0;
+
+        const wait = (time) => new Promise(resolve => setTimeout(resolve, time));
+
+        async function animateTitle() {
+            while (true) {
+                const currentTitle = pageTitles[titleIndex];
+
+                for (let i = currentTitle.length; i >= 0; i--) {
+                    document.title = currentTitle.slice(0, i) || ' ';
+                    await wait(deletingSpeed);
+                }
+
+                await wait(pauseBeforeTyping);
+                titleIndex = (titleIndex + 1) % pageTitles.length;
+
+                const nextTitle = pageTitles[titleIndex];
+
+                for (let i = 1; i <= nextTitle.length; i++) {
+                    document.title = nextTitle.slice(0, i);
+                    await wait(typingSpeed);
+                }
+
+                await wait(pauseAfterTyping);
+            }
+        }
+
+        animateTitle();
+
+        const skillsShowcase = document.querySelector('.skills-showcase');
+        const skillButtons = document.querySelectorAll('.skill-item[data-skill]');
+        const commercialVideoButton = document.querySelector('#commercial-video');
+        const commercialVideos = document.querySelectorAll('.commercial-video');
+
+        function playCommercialVideos() {
+            commercialVideos.forEach(video => {
+                video.muted = true;
+                const playRequest = video.play();
+
+                if (playRequest) {
+                    playRequest.catch(() => {});
+                }
+            });
+        }
+
+        function pauseCommercialVideos() {
+            commercialVideos.forEach(video => {
+                video.pause();
+                video.currentTime = 0;
+            });
+        }
+
+        if (skillsShowcase && skillButtons.length) {
+            skillButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const nextSkill = button.dataset.skill;
+                    const isAlreadyActive = skillsShowcase.dataset.activeSkill === nextSkill;
+
+                    if (isAlreadyActive) {
+                        delete skillsShowcase.dataset.activeSkill;
+                        button.classList.remove('is-active');
+                        pauseCommercialVideos();
+                        return;
+                    }
+
+                    skillsShowcase.dataset.activeSkill = nextSkill;
+                    skillButtons.forEach(skillButton => {
+                        skillButton.classList.toggle('is-active', skillButton === button);
+                    });
+
+                    if (nextSkill === 'commercial-video') {
+                        playCommercialVideos();
+                    } else {
+                        pauseCommercialVideos();
+                    }
+                });
+            });
+        }
+
+        if (commercialVideoButton && commercialVideos.length) {
+            commercialVideoButton.addEventListener('mouseenter', playCommercialVideos);
+            commercialVideoButton.addEventListener('focus', playCommercialVideos);
+            commercialVideoButton.addEventListener('mouseleave', () => {
+                if (skillsShowcase?.dataset.activeSkill !== 'commercial-video') {
+                    pauseCommercialVideos();
+                }
+            });
+            commercialVideoButton.addEventListener('blur', () => {
+                if (skillsShowcase?.dataset.activeSkill !== 'commercial-video') {
+                    pauseCommercialVideos();
+                }
+            });
+        }
+
+        const vibeLab = document.querySelector('.vibe-lab');
+
+        if (vibeLab) {
+            const themes = {
+                neon: {
+                    primary: '#ff00df',
+                    primaryRgb: '255, 0, 223',
+                    accent: '#00f0ff',
+                    accentRgb: '0, 240, 255',
+                    hot: '#ff0000',
+                    hotRgb: '255, 0, 0',
+                    title: 'Interactive web detail'
+                },
+                heat: {
+                    primary: '#ff2a00',
+                    primaryRgb: '255, 42, 0',
+                    accent: '#ffd000',
+                    accentRgb: '255, 208, 0',
+                    hot: '#ff6a00',
+                    hotRgb: '255, 106, 0',
+                    title: 'Fast launch interface'
+                },
+                ice: {
+                    primary: '#00e5ff',
+                    primaryRgb: '0, 229, 255',
+                    accent: '#b9fff5',
+                    accentRgb: '185, 255, 245',
+                    hot: '#5b8dff',
+                    hotRgb: '91, 141, 255',
+                    title: 'Clean motion system'
+                }
+            };
+            const root = document.documentElement;
+            const vibeTitle = vibeLab.querySelector('.vibe-title');
+            const vibeDepthLabel = vibeLab.querySelector('.vibe-depth-label');
+            const vibeMotionLabel = vibeLab.querySelector('.vibe-motion-label');
+            const vibeIntensity = vibeLab.querySelector('.vibe-intensity');
+            const vibeMotion = vibeLab.querySelector('.vibe-motion');
+            const vibeColorInputs = vibeLab.querySelectorAll('.vibe-color-input');
+
+            function hexToRgb(hex) {
+                const cleanHex = hex.replace('#', '');
+                const value = parseInt(cleanHex, 16);
+                return `${(value >> 16) & 255}, ${(value >> 8) & 255}, ${value & 255}`;
+            }
+
+            function setThemePart(part, value) {
+                const rgb = hexToRgb(value);
+
+                root.style.setProperty(`--site-${part}`, value);
+                root.style.setProperty(`--site-${part}-rgb`, rgb);
+
+                if (part === 'primary') {
+                    vibeLab.style.setProperty('--lab-accent', value);
+                }
+
+                if (part === 'accent') {
+                    vibeLab.style.setProperty('--lab-alt', value);
+                }
+            }
+
+            vibeLab.querySelectorAll('[data-vibe-theme]').forEach(button => {
+                button.addEventListener('click', () => {
+                    const theme = themes[button.dataset.vibeTheme];
+                    setThemePart('primary', theme.primary);
+                    setThemePart('accent', theme.accent);
+                    setThemePart('hot', theme.hot);
+                    vibeLab.style.setProperty('--lab-accent', theme.primary);
+                    vibeLab.style.setProperty('--lab-alt', theme.accent);
+                    vibeTitle.textContent = theme.title;
+
+                    vibeColorInputs.forEach(input => {
+                        input.value = theme[input.dataset.themePart];
+                    });
+                });
+            });
+
+            vibeColorInputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    setThemePart(input.dataset.themePart, input.value);
+                });
+            });
+
+            vibeIntensity.addEventListener('input', () => {
+                vibeLab.style.setProperty('--lab-depth', `${vibeIntensity.value}%`);
+                root.style.setProperty('--site-depth', `${vibeIntensity.value}%`);
+                vibeDepthLabel.textContent = `${vibeIntensity.value}%`;
+            });
+
+            vibeMotion.addEventListener('change', () => {
+                vibeLab.classList.toggle('is-moving', vibeMotion.checked);
+                vibeMotionLabel.textContent = vibeMotion.checked ? 'Active' : 'Still';
+            });
+        }
+
+        const fennGlitchText = document.querySelector('.fenn-glitch');
+
+        if (fennGlitchText) {
+            function switchFennText(nextText) {
+                fennGlitchText.classList.add('is-switching');
+
+                window.setTimeout(() => {
+                    fennGlitchText.textContent = nextText;
+                    fennGlitchText.classList.remove('is-switching');
+                }, 140);
+            }
+
+            fennGlitchText.addEventListener('mouseenter', () => {
+                switchFennText('Seksan Moolthaisong');
+            });
+
+            fennGlitchText.addEventListener('mouseleave', () => {
+                switchFennText('FENN');
+            });
+        }
+
+        const heroTagline = document.querySelector('.hero-tagline');
+
+        if (heroTagline) {
+            const taglines = [
+                {
+                    lang: 'en',
+                    text: 'I turn your ideas into bold visuals, music, videos, and digital experiences.'
+                },
+                {
+                    lang: 'th',
+                    text: 'ผมเปลี่ยนไอเดียของคุณให้กลายเป็นงานภาพ ดนตรี วิดีโอ และประสบการณ์ดิจิทัลที่โดดเด่น'
+                }
+            ];
+            let taglineIndex = 0;
+
+            window.setInterval(() => {
+                heroTagline.classList.add('is-switching');
+
+                window.setTimeout(() => {
+                    taglineIndex = (taglineIndex + 1) % taglines.length;
+                    heroTagline.textContent = taglines[taglineIndex].text;
+                    heroTagline.lang = taglines[taglineIndex].lang;
+                    heroTagline.classList.remove('is-switching');
+                }, 250);
+            }, 10000);
+        }
+
+    </script>
+</body>
+</html>

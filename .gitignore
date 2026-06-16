@@ -1,0 +1,22 @@
+# Local/private files
+START PASSWORD.txt
+启动密码_Start password.txt
+localhost.txt
+
+# Source/project files that are not needed by GitHub Pages
+FL/
+Drawing/
+FENNRIRTOOTHZ.png
+Resume material/ChatGPT Image Jun 11, 2026, 06_26_11 PM (1).png
+Resume material/ChatGPT Image Jun 11, 2026, 06_26_11 PM (2).png
+Resume material/ChatGPT Image Jun 11, 2026, 06_26_12 PM (3).png
+*.clip
+*.flp
+*.wav
+*.WAV
+*.mov
+*.MOV
+
+# Editor/system noise
+.DS_Store
+Thumbs.db
