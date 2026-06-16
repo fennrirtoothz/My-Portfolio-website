@@ -1137,6 +1137,36 @@
     font-size: 1rem;
 }
 
+.about-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.about-bio-btn {
+    min-height: 44px;
+    padding: 0 18px;
+    border: 1px solid rgba(var(--site-hot-rgb), 0.72);
+    background: rgba(var(--site-hot-rgb), 0.12);
+    color: #fff;
+    font: inherit;
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    cursor: pointer;
+    transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.about-bio-btn:hover,
+.about-bio-btn:focus-visible {
+    background: var(--site-hot);
+    border-color: var(--site-hot);
+    transform: translateY(-2px);
+    outline: none;
+    box-shadow: 0 0 18px rgba(var(--site-hot-rgb), 0.34);
+}
+
 /* Social Buttons */
 .social-links {
     display: flex;
@@ -1169,6 +1199,182 @@
     box-shadow: 0 0 15px rgba(var(--site-hot-rgb), 0.4);
 }
 
+.proficiency-section {
+    padding: 88px 24px 96px;
+    background:
+        radial-gradient(circle at 18% 18%, rgba(var(--site-primary-rgb), 0.18), transparent 34%),
+        linear-gradient(135deg, #050505 0%, #111 52%, color-mix(in srgb, var(--site-hot) 18%, #050505) 100%);
+    color: #fff;
+}
+
+.proficiency-inner {
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.proficiency-heading {
+    margin-bottom: 34px;
+}
+
+.proficiency-heading h2 {
+    color: var(--site-primary);
+    font-size: clamp(2.1rem, 4vw, 4rem);
+    line-height: 1;
+    font-weight: 800;
+}
+
+.proficiency-heading-en,
+.proficiency-name-en {
+    opacity: 0.58;
+    font-size: 0.56em;
+    font-weight: 700;
+}
+
+.proficiency-heading p {
+    margin-top: 10px;
+    color: #aaa;
+}
+
+.proficiency-list {
+    display: grid;
+    gap: 22px;
+}
+
+.proficiency-item {
+    --skill-delay: 0s;
+}
+
+.proficiency-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 8px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.proficiency-name {
+    color: #f4f4f4;
+}
+
+.proficiency-value {
+    color: var(--site-hot);
+}
+
+.proficiency-track {
+    position: relative;
+    height: 14px;
+    overflow: hidden;
+    background: rgba(var(--site-hot-rgb), 0.16);
+}
+
+.proficiency-fill {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--site-hot) 70%, #6b0000) 0%,
+        var(--site-primary) 52%,
+        #ffffff 100%
+    );
+    animation: proficiencySmoothFill 1.35s cubic-bezier(0.22, 1, 0.36, 1) var(--skill-delay, 0s) forwards;
+}
+
+.proficiency-track::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 34%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+    transform: translateX(-120%);
+    animation: proficiencyLoadIndicator 1.35s ease-out var(--skill-delay, 0s) forwards;
+}
+
+.proficiency-item:nth-child(1) { --skill-delay: 0s; }
+.proficiency-item:nth-child(2) { --skill-delay: 0.1s; }
+.proficiency-item:nth-child(3) { --skill-delay: 0.2s; }
+.proficiency-item:nth-child(4) { --skill-delay: 0.3s; }
+.proficiency-item:nth-child(5) { --skill-delay: 0.4s; }
+.proficiency-item:nth-child(6) { --skill-delay: 0.5s; }
+.proficiency-item:nth-child(7) { --skill-delay: 0.6s; }
+
+@keyframes proficiencySmoothFill {
+    to {
+        width: var(--skill-level);
+    }
+}
+
+@keyframes proficiencyLoadIndicator {
+    to {
+        transform: translateX(320%);
+    }
+}
+
+.bio-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    place-items: center;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.86);
+}
+
+.bio-overlay.is-open {
+    display: grid;
+}
+
+.bio-panel {
+    position: relative;
+    width: min(760px, 100%);
+    max-height: min(82vh, 720px);
+    overflow: auto;
+    padding: 32px;
+    background:
+        radial-gradient(circle at 100% 0%, rgba(var(--site-hot-rgb), 0.22), transparent 38%),
+        #070707;
+    border: 1px solid rgba(var(--site-hot-rgb), 0.42);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.62);
+}
+
+.bio-close-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+}
+
+.bio-close-btn:hover,
+.bio-close-btn:focus-visible {
+    border-color: var(--site-hot);
+    color: var(--site-hot);
+    outline: none;
+}
+
+.bio-panel h2 {
+    color: var(--site-primary);
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    line-height: 1;
+    margin-bottom: 18px;
+}
+
+.bio-role {
+    color: var(--site-hot);
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.bio-panel p {
+    color: #d6d6d6;
+    line-height: 1.75;
+    margin-bottom: 14px;
+}
+
 /* Mobile Responsive */
 @media (max-width: 900px) {
     .about-container {
@@ -1184,6 +1390,11 @@
     }
 
     .about-content h2 { text-align: center !important; }
+
+    .about-actions,
+    .social-links {
+        justify-content: center;
+    }
 }
 
 /* --- FENN Glitch Text Effect --- */
@@ -1308,6 +1519,10 @@
                 <p>
                     I can can give your business a new creative start right away!
                 </p>
+
+                <div class="about-actions">
+                    <button class="about-bio-btn" type="button" data-bio-open>Biography</button>
+                </div>
                 
                 <div class="social-links">
                     <a href="https://www.instagram.com/owl.4983532/" class="social-btn" aria-label="Instagram" target="_blank">
@@ -1316,6 +1531,87 @@
                     <a href="https://www.facebook.com/S.Moolthaisong/about?locale=th_TH" class="social-btn" aria-label="Facebook" target="_blank">
                         <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
                     </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="proficiency-section" aria-labelledby="proficiency-title">
+        <div class="proficiency-inner">
+            <div class="proficiency-heading">
+                <h2 id="proficiency-title">ระดับทักษะ <span class="proficiency-heading-en" lang="en">Skill Level</span></h2>
+                <p>การประเมินทักษะด้วยตนเอง</p>
+            </div>
+
+            <div class="proficiency-list">
+                <div class="proficiency-item">
+                    <div class="proficiency-meta">
+                        <span class="proficiency-name">กราฟิกดีไซน์ <span class="proficiency-name-en" lang="en">Graphic Design</span></span>
+                        <span class="proficiency-value">85%</span>
+                    </div>
+                    <div class="proficiency-track" role="progressbar" aria-label="Graphic Design" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85">
+                        <div class="proficiency-fill" style="--skill-level: 85%;"></div>
+                    </div>
+                </div>
+
+                <div class="proficiency-item">
+                    <div class="proficiency-meta">
+                        <span class="proficiency-name">ตัดต่อวิดีโอ <span class="proficiency-name-en" lang="en">Video Editing</span></span>
+                        <span class="proficiency-value">80%</span>
+                    </div>
+                    <div class="proficiency-track" role="progressbar" aria-label="Video Editing" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80">
+                        <div class="proficiency-fill" style="--skill-level: 80%;"></div>
+                    </div>
+                </div>
+
+                <div class="proficiency-item">
+                    <div class="proficiency-meta">
+                        <span class="proficiency-name">แปลภาษาไทย-อังกฤษ <span class="proficiency-name-en" lang="en">Thai-English Translation</span></span>
+                        <span class="proficiency-value">85%</span>
+                    </div>
+                    <div class="proficiency-track" role="progressbar" aria-label="Thai-English Translation" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85">
+                        <div class="proficiency-fill" style="--skill-level: 85%;"></div>
+                    </div>
+                </div>
+
+                <div class="proficiency-item">
+                    <div class="proficiency-meta">
+                        <span class="proficiency-name">โปรดิวซ์เพลง <span class="proficiency-name-en" lang="en">Music Production</span></span>
+                        <span class="proficiency-value">70%</span>
+                    </div>
+                    <div class="proficiency-track" role="progressbar" aria-label="Music Production" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70">
+                        <div class="proficiency-fill" style="--skill-level: 70%;"></div>
+                    </div>
+                </div>
+
+                <div class="proficiency-item">
+                    <div class="proficiency-meta">
+                        <span class="proficiency-name">ภาพโฆษณา <span class="proficiency-name-en" lang="en">Advertising Images</span></span>
+                        <span class="proficiency-value">65%</span>
+                    </div>
+                    <div class="proficiency-track" role="progressbar" aria-label="Advertising Images" aria-valuemin="0" aria-valuemax="100" aria-valuenow="65">
+                        <div class="proficiency-fill" style="--skill-level: 65%;"></div>
+                    </div>
+                </div>
+
+                <div class="proficiency-item">
+                    <div class="proficiency-meta">
+                        <span class="proficiency-name">วิดีโฆษณา <span class="proficiency-name-en" lang="en">Commercial Video</span></span>
+                        <span class="proficiency-value">70%</span>
+                    </div>
+                    <div class="proficiency-track" role="progressbar" aria-label="Commercial Video" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70">
+                        <div class="proficiency-fill" style="--skill-level: 70%;"></div>
+                    </div>
+                </div>
+
+                <div class="proficiency-item">
+                    <div class="proficiency-meta">
+                        <span class="proficiency-name">พัฒนาเว็บไซต์ / ไวบ์โค้ดดิ้ง <span class="proficiency-name-en" lang="en">Web / Vibe Coding</span></span>
+                        <span class="proficiency-value">60%</span>
+                    </div>
+                    <div class="proficiency-track" role="progressbar" aria-label="Web and Vibe Coding" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60">
+                        <div class="proficiency-fill" style="--skill-level: 60%;"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1573,6 +1869,19 @@
         </div>
     </section>
 
+    <div id="bio-overlay" class="bio-overlay" role="dialog" aria-modal="true" aria-label="Biography" aria-hidden="true">
+        <div class="bio-panel">
+            <button class="bio-close-btn" type="button" aria-label="Close biography" data-bio-close>
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+            <h2>Biography</h2>
+            <p class="bio-role">Graphic design, video editing, and digital media design</p>
+            <p>Seksan Moolthaisong was born and raised in Khon Kaen, Thailand. He spent six years of his childhood in Phra Yuen District before moving into the city. He completed primary school at Tessaban Suansanuk School and secondary school in the Arts-Language program at Kaennakhon Wittayalai School.</p>
+            <p>During his studies, he began contributing translations and lyrics information through Musixmatch, with contributions published on Spotify and other connected music platforms. At the same time, he independently developed skills in graphic design, image editing, video production, music production, and web design.</p>
+            <p>He continues to expand his creative skills while preparing for future university study, focusing on polished visual work, digital experiences, and media with a clear identity.</p>
+        </div>
+    </div>
+
     <script>
         const pageTitles = [
             'FENNRIRTOOTHZ',
@@ -1677,6 +1986,37 @@
                 }
             });
         }
+
+        const bioOverlay = document.querySelector('#bio-overlay');
+        const bioOpenButton = document.querySelector('[data-bio-open]');
+        const bioCloseButton = document.querySelector('[data-bio-close]');
+
+        function openBio() {
+            if (!bioOverlay) return;
+            bioOverlay.classList.add('is-open');
+            bioOverlay.setAttribute('aria-hidden', 'false');
+            bioCloseButton?.focus();
+        }
+
+        function closeBio() {
+            if (!bioOverlay) return;
+            bioOverlay.classList.remove('is-open');
+            bioOverlay.setAttribute('aria-hidden', 'true');
+            bioOpenButton?.focus();
+        }
+
+        bioOpenButton?.addEventListener('click', openBio);
+        bioCloseButton?.addEventListener('click', closeBio);
+        bioOverlay?.addEventListener('click', event => {
+            if (event.target === bioOverlay) {
+                closeBio();
+            }
+        });
+        window.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && bioOverlay?.classList.contains('is-open')) {
+                closeBio();
+            }
+        });
 
         const vibeLab = document.querySelector('.vibe-lab');
 
